@@ -208,7 +208,7 @@ let formatDateNicely = (date) => {
     
     let datum = new Date(date);
     let d = datum.getDate();
-    let m = datum.getMonth() + 1; //Month from 0 to 11
+    let m = datum.getMonth() + 1;
     let y = datum.getFullYear();
     return "0" + d + '/0' +  m  + '/' + y;
 }
@@ -236,25 +236,70 @@ let titleize = (string) => {
 
 
 let checkForSpecialCharacters = (string) => {
-    return 'Write your method here';
+ 
+    return string.match(/[^a-zA-Z0-9]+$/) ? true : false;
 }
 
 let squareRoot = (number) => {
-    return 'Write your method here';
+    
+    return Math.sqrt(number);
 }
 
 let factorial = (number) => {
-    return 'Write your method here';
+   
+    let factNum = 1; 
+    for (i = 1; i <= number; i++) {
+
+        factNum *= i;
+    }
+    return factNum;
 }
 
 let findAnagrams = (string) => {
-    return 'Write your method here';
-}
+    
+ /*    let anagrams = {};
+    let strings = string.slpit();
+    strings.forEach((str) => {
+        
+    }); (let i in strings) {
+
+        str = strings[i];
+        let sort = sort.sort(str);
+        if (anagrams[sort] != null) {
+           (')
+            anagrams[sort].push(string);
+        } 
+        else {
+            anagrams[sort] = [string];
+        }
+        
+    }
+    return anagrams;*/
+} 
 
 let convertToCelsius = (number) => {
-    return 'Write your method here';
-}
+
+    return Math.round((number - 32) * 5 / 9);
+}    
 
 let letterPosition = (array) => {
-    return 'Write your method here';
+ 
+    for (let index = 0; index < array.length; index++) {
+       
+        let positions = [];
+        let texte = array.toString();
+	    for ( var i = 0; i < texte.length; i++ ) {
+		    
+            let charCode = texte.charCodeAt(i);
+		    if ( charCode >= 97 && charCode <= 122 ) {
+			
+                positions.push( charCode - 96 );
+
+		    } else if ( charCode >= 65 && charCode <= 90 ) { 
+			
+                positions.push( charCode - 64 );
+		    }
+	    }
+        return positions;
+    }    
 }
