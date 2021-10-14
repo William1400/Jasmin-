@@ -7,8 +7,8 @@ let selectElementsStartingWithA = (array) => {
 
 let selectElementsStartingWithVowel = (array) => {
     
-    let sElSw = array.filter(str => /^[aeiou]/i.test(str));
-    return sElSw;
+    let a = array.filter(str => /^[aeiou]/i.test(str));
+    return a;
 }
 
 let removeNullElements = (array) => {
@@ -22,6 +22,7 @@ let removeNullAndFalseElements = (array) => {
     let rem = array.filter(n => (n===null) || ((n===false) && typeof(n) == "boolean") ? false : true);
     return rem;
 }
+
 let reverseWordsInArray = (array) => {
    
     let res = array.map((element) => {
@@ -33,8 +34,6 @@ let reverseWordsInArray = (array) => {
     });
     return res;
 }
-
-    
 
 let everyPossiblePair = (array) => {
     
@@ -98,69 +97,143 @@ let numberOfPalindromes = (array) => {
 
 let shortestWord = (array) => {
     
-   
+   return array.reduce((a, b) => {
+
+     return a.length > b.length ? b : a ;
+   });
   
 }
 
 let longestWord = (array) => {
-    return 'Write your method here';
+    
+    return array.sort(function(a, b ) {
+         
+        return b.length - a.length
+    })[0];
 }
 
 let sumNumbers = (array) => {
-    return 'Write your method here';
+   
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+        
+        count += array[i];
+        
+    }
+    return count;
 }
 
 let repeatElements = (array) => {
-    return 'Write your method here';
+  
+    return array.concat(array).sort((a, b) => a -b);
 }
 
 let stringToNumber = (string) => {
-    return 'Write your method here';
+    
+    let num = Math.floor(string);
+    return num;
 }
 
 let calculateAverage = (array) => {
-    return 'Write your method here';
+    
+    return array.reduce((a, b) => a + b, 0) / array.length;
 }
 
 let getElementsUntilGreaterThanFive = (array) => {
-    return 'Write your method here';
-}
 
+    let nA = [];
+    let i = 1;
+    let x = array[0];
+   
+    while (x <= 5 && i < array.length) {
+        nA.push(x);
+        x = array[i];
+        i++;
+    }
+
+   return nA;
+}    
+        
 let convertArrayToObject = (array) => {
-    return 'Write your method here';
+    
+    // let arr = [];
+    // while (array.length < 0) {
+        
+    //    arr.push(array.slice(0, 2))
+    // }
+    
+    // return Object.fromEntries(arr);
 }
 
 let getAllLetters = (array) => {
-    return 'Write your method here';
+    
+    
+    let arr = [...new Set(array)].join("").split('').sort();
+
+    return arr.sort()
+
 }
 
 let swapKeysAndValues = (object) => {
-    return 'Write your method here';
+    
+     return Object.keys(object).reduce((obj, key) => Object.assign({}, obj, { [object[key]]: key }), {});
 }
 
 let sumKeysAndValues = (object) => {
-    return 'Write your method here';
+    
+    let obj = Object.keys(object);
+    let val = Object.values(object)
+    let sum = 0;
+    for (let i = 0; i <val.length; i++) {
+       
+        sum += parseInt(val[i], 10) + parseInt(obj[i], 10);
+    
+    }
+
+    return sum;
 }
 
 let removeCapitals = (string) => {
-    return 'Write your method here';
+
+    return string.match(/[^A-Z]/g, '').join("").toString();
+  
 }
 
 let roundUp = (number) => {
-    return 'Write your method here';
+   
+    return Math.ceil(number);
 }
 
 let formatDateNicely = (date) => {
-    return 'Write your method here';
+    
+    let datum = new Date(date);
+    let d = datum.getDate();
+    let m = datum.getMonth() + 1; //Month from 0 to 11
+    let y = datum.getFullYear();
+    return "0" + d + '/0' +  m  + '/' + y;
 }
 
 let getDomainName = (string) => {
-    return 'Write your method here';
+    
+/*     let email = string;
+    let name   = email.substring(0, email.lastIndexOf("@"));
+    let domain = email.substring(email.lastIndexOf("@") +1) 
+
+    return name, domain; 
+ */
 }
 
+
+
 let titleize = (string) => {
-    return 'Write your method here';
-}
+
+  /* string = string.toLowerCase().split(' ');
+	for (var i = 0; i < string.length; i++) {
+		string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1);
+	}
+	return string.join(' ');*/
+}  
+
 
 let checkForSpecialCharacters = (string) => {
     return 'Write your method here';
