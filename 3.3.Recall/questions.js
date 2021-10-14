@@ -1,8 +1,7 @@
 let selectElementsStartingWithA = (array) => {
  
-    array.sort();
-    array.splice(2, 2);
-    return array; 
+    return array.sort().splice(2, 2);
+    
 }
 
 let selectElementsStartingWithVowel = (array) => {
@@ -156,13 +155,13 @@ let getElementsUntilGreaterThanFive = (array) => {
         
 let convertArrayToObject = (array) => {
     
-    // let arr = [];
-    // while (array.length < 0) {
-        
-    //    arr.push(array.slice(0, 2))
-    // }
+    let obj = {};
+    for (let i = 0; i < array.length; i = i + 2) {
     
-    // return Object.fromEntries(arr);
+        obj[array[i]] = array[i + 1];
+    } 
+    return obj;
+    
 }
 
 let getAllLetters = (array) => {
@@ -195,7 +194,7 @@ let sumKeysAndValues = (object) => {
 
 let removeCapitals = (string) => {
 
-    return string.match(/[^A-Z]/g, '').join("").toString();
+    return string.replace(/[A-Z]/g, '') // return string.match(/[^A-Z]/g, '').join("").toString();
   
 }
 
@@ -215,25 +214,25 @@ let formatDateNicely = (date) => {
 
 let getDomainName = (string) => {
     
-/*     let email = string;
-    let name   = email.substring(0, email.lastIndexOf("@"));
-    let domain = email.substring(email.lastIndexOf("@") +1) 
-
-    return name, domain; 
- */
+    return string.replace(/[^@]*@/, "").replace('.com', "");
+    
 }
-
-
 
 let titleize = (string) => {
 
-  /* string = string.toLowerCase().split(' ');
-	for (var i = 0; i < string.length; i++) {
-		string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1);
-	}
-	return string.join(' ');*/
+    let up = string.split(' ');
+    for (let i = 1; i < up.length; i++) {
+        
+        if (up [i - 1] == 'the'|| up[i - 1].slice(-1) == '.') {
+            
+            up[i] = up[i].charAt(0).toUpperCase() + up[i].slice(1);
+        
+        }
+   
+    }
+    up[0] = up[0].charAt(0).toUpperCase() + up[0].slice(1);
+    return up.join(' ');
 }  
-
 
 let checkForSpecialCharacters = (string) => {
  
@@ -256,26 +255,24 @@ let factorial = (number) => {
 }
 
 let findAnagrams = (string) => {
-    
- /*    let anagrams = {};
-    let strings = string.slpit();
-    strings.forEach((str) => {
-        
-    }); (let i in strings) {
-
-        str = strings[i];
-        let sort = sort.sort(str);
-        if (anagrams[sort] != null) {
-           (')
-            anagrams[sort].push(string);
-        } 
-        else {
-            anagrams[sort] = [string];
-        }
-        
+   
+    if (string.length < 2) {
+        return string;
     }
-    return anagrams;*/
-} 
+
+    let permutationsArray = [];
+
+    for (let i = 0; i < string.length; i++){
+
+        let char = string[i];
+        let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length);
+
+        for (let permutation of findAnagrams(remainingChars)) {
+            permutationsArray.push(char + permutation) 
+        }
+    }
+    return permutationsArray;
+}
 
 let convertToCelsius = (number) => {
 
